@@ -157,6 +157,7 @@ public class BoxService extends Service{
 	}
 	public void bootupWorks(){
 		mWifiManager.setWifiApEnabled(null, false);
+		disableEthernet();
 		mWifiManager.setWifiEnabled(true);
 		int state = mWifiManager.getWifiState();
 		while(state != WifiManager.WIFI_STATE_ENABLED){ /* wait wifi enabled then we can get the configures.*/
@@ -322,6 +323,7 @@ public class BoxService extends Service{
     }
     private void startWifi(String ssid,String password,int type){
     	mWifiManager.setWifiApEnabled(null, false);
+    	disableEthernet();
 		mWifiManager.setWifiEnabled(true);
 		
 		WifiConfiguration wc = getWifiConfig(ssid, password, type);

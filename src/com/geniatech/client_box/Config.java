@@ -10,7 +10,7 @@ public class Config{
 	
 	public static final int REPORT_ID_REP_NUM = 3;
 	public static final int REPORT_TIME = 2;
-	public static final int WAIT_WIFI_TIME = 20;  //20s
+	public static final int WAIT_WIFI_TIME = 40;  //40s
 	public static final int LISTEN_TIME_OUT = 10000; //10s
 	
 	public static final String DEF_AP_SSID = "BOX_ID_1234";

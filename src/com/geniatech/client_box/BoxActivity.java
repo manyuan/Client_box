@@ -118,7 +118,9 @@ public class BoxActivity extends Activity {
         if (state != null) {
             WifiInfo info = mWifiManager.getConnectionInfo();
             if (info != null) {
-            	mTextView.setText(Summary.get(this, info.getSSID(), state));
+            	String str = Summary.get(this, info.getSSID(), state);
+            	if(str == null || str =="") return;
+            	mTextView.setText(str);
             }
         }
     }
