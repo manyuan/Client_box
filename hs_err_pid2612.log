@@ -1,0 +1,2 @@
+box bootup diagram:
+    bootup --> start BoxService -->get net info --> do net config --> init net Port --> send multicast --> message loop.
