@@ -70,19 +70,35 @@ public class BoxActivity extends Activity {
 	}
 
 	public void getwifi(){
-		List<WifiConfiguration> confList = mWifiManager.getConfiguredNetworks();
-		Log.i("asdfadf","===============removeConfigs======3===-----"+confList.size());
-		for(WifiConfiguration conf:confList){
-			Log.i("asdfadf","===============removeConfigs======3===-----"+conf.status);
-			if(conf.SSID.contains("ChinaNet-GTL")){
-				//mTextView.setText(conf.status);
-			}
-		}
+		WifiConfiguration conf = BoxService.getWifiConfig("ChinaNet-GTL", "qwer123w4", 1);
+    	List<WifiConfiguration> conList = mWifiManager.getConfiguredNetworks();
+    	for(WifiConfiguration con:conList){
+    		mWifiManager.removeNetwork(con.networkId);
+    	}
+		int networkId = mWifiManager.addNetwork(conf);
+        if (networkId != -1) {
+            mWifiManager.enableNetwork(networkId, false);
+            conf.networkId = networkId;
+            connect(networkId);
+        }
 	}
+	private void connect(int networkId) {
+        if (networkId == -1) {
+            return;
+        }
+        WifiConfiguration config = new WifiConfiguration();
+        config.networkId = networkId;
+        //config.priority = 0;
+        mWifiManager.updateNetwork(config);
+        mWifiManager.saveConfiguration();
+        mWifiManager.enableNetwork(networkId, true);
+        mWifiManager.reconnect();
+    }
 	@Override
 	protected void onResume() {
 		super.onResume();
 		registerReceiver(mReceiver, mIntentFilter);
+		mTextView.setText(WifiUtils.getActiveSSID());
 	}
 	@Override
 	protected void onPause() {
@@ -136,7 +152,7 @@ public class BoxActivity extends Activity {
             	mTextView.setText(R.string.wifi_stopping);
                 break;
             case WifiManager.WIFI_AP_STATE_DISABLED:
-            	mTextView.setText("AP disabled.");
+            	//mTextView.setText("AP disabled.");
                 break;
             default:
             	mTextView.setText(R.string.wifi_error);

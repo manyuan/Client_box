@@ -47,9 +47,6 @@ public class BoxService extends Service{
 	private WifiManager mWifiManager;
 	ConnectivityManager mConnectManager;
 	private WifiUtils mWifiUtils;
-	private WifiManager.Channel mChanel;
-	private WifiManager.ActionListener mConnectListener;
-	
 	private String cmd_ssid = null;
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -62,16 +59,7 @@ public class BoxService extends Service{
 		mWifiManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 		mConnectManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		mWifiUtils = new WifiUtils(mWifiManager);
-		mChanel = mWifiManager.initialize(this, getMainLooper(), null);
-		//mWifiManager.setWifiEnabled(true);
-		//disableEthernet();
-		mConnectListener = new WifiManager.ActionListener() {
-	        public void onSuccess() {
-	        }
-	        public void onFailure(int reason) {
-	             startAp(Config.CMD_BOX_SSID, Config.CMD_BOX_PASSWORD, 1);
-	        }
-	    };
+
 				
 		mMultiLock=mWifiManager.createMulticastLock("multiLock");
 		mMultiLock.acquire();
@@ -285,7 +273,10 @@ public class BoxService extends Service{
     			return;
     		}
     		int secureType = Integer.valueOf(secure);
-    		startWifi(ssid,password,secureType);
+    		disableEthernet();
+    		WifiUtils.startWifi(ssid,password,secureType);
+    		cmd_ssid = ssid;
+    		startTimer1();
     	}else if(cmd.equals(Config.CMD_PHONE_REQUEST_ID)){
     		reportBoxInfo();
     	}
@@ -336,10 +327,11 @@ public class BoxService extends Service{
 			}
 			state = mWifiManager.getWifiState();
 		}
-		mWifiManager.connect(mChanel, wc, mConnectListener);
+		if(Config.DEBUG) Log.i(TAG,"======start WIFI--->ssid:"+ssid+"--password:"+password+"----type:"+type);
+		mWifiManager.connectNetwork(wc);
 		cmd_ssid = ssid;
 		startTimer1();
-    	if(Config.DEBUG) Log.i(TAG,"======start WIFI--->ssid:"+ssid+"--password:"+password+"----type:"+type);
+    	
     }
     public WifiConfiguration getApConfig(String ssid,String password,int type) {
         if(ssid == null) return null;
@@ -384,9 +376,9 @@ public class BoxService extends Service{
         	 wc.preSharedKey = '"' + password + '"';
          }
 		//wc.preSharedKey = "qwer1234";
-		wc.proxySettings = ProxySettings.UNASSIGNED;
-		wc.ipAssignment = IpAssignment.UNASSIGNED;
-		wc.linkProperties = new LinkProperties();
+		//wc.proxySettings = ProxySettings.UNASSIGNED;
+		//wc.ipAssignment = IpAssignment.UNASSIGNED;
+		//wc.linkProperties = new LinkProperties();
 		wc.networkId = -1;
 		return wc;
     }
