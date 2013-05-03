@@ -15,7 +15,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-import android.net.LinkProperties;
 import android.net.NetworkInfo;
 import android.net.NetworkUtils;
 import android.net.ethernet.EthernetManager;
@@ -24,9 +23,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiConfiguration.AuthAlgorithm;
-import android.net.wifi.WifiConfiguration.IpAssignment;
 import android.net.wifi.WifiConfiguration.KeyMgmt;
-import android.net.wifi.WifiConfiguration.ProxySettings;
 import android.net.wifi.WifiManager.MulticastLock;
 import android.os.Handler;
 import android.os.IBinder;
@@ -66,6 +63,7 @@ public class BoxService extends Service{
 		registerReceiver();
 		
 		mBoxServiceHandle.sendEmptyMessageDelayed(MSG_LOCAL_BOOTUP, 2000);
+		new SimpleWeb(mBoxServiceHandle,this).ServerStart();
 	}
 	@Override
 	public void onDestroy() {

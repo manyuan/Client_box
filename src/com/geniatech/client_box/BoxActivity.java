@@ -9,7 +9,10 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.app.Activity;
@@ -45,7 +48,11 @@ public class BoxActivity extends Activity {
     };
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_box);
 		mWifiManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 		new WifiUtils(mWifiManager);
@@ -67,6 +74,8 @@ public class BoxActivity extends Activity {
 				getwifi();
 			}
 		});
+		
+		//new SimpleWeb().ServerStart();
 	}
 
 	public void getwifi(){
@@ -123,7 +132,7 @@ public class BoxActivity extends Activity {
             	mTextView.setText(R.string.wifi_stopping);
                 break;
             case WifiManager.WIFI_STATE_DISABLED:
-            	mTextView.setText("stoped");
+            	mTextView.setText("已经停止");
                 break;
             default:
             	mTextView.setText(R.string.wifi_error);
@@ -146,7 +155,7 @@ public class BoxActivity extends Activity {
             	mTextView.setText(R.string.wifi_starting);
                 break;
             case WifiManager.WIFI_AP_STATE_ENABLED:
-            	mTextView.setText("AP enabled:" + WifiUtils.getActiveSSID());
+            	mTextView.setText("已开启热点:" + WifiUtils.getActiveSSID());
                 break;
             case WifiManager.WIFI_AP_STATE_DISABLING:
             	mTextView.setText(R.string.wifi_stopping);
@@ -157,5 +166,10 @@ public class BoxActivity extends Activity {
             default:
             	mTextView.setText(R.string.wifi_error);
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	// TODO Auto-generated method stub
+    	return true;
     }
 }

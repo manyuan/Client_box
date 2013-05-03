@@ -7,13 +7,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:gravity="center"
+    android:background="@drawable/bg"
     tools:context=".BoxActivity" >
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp" />
+        android:textColor="#ff000000"
+        android:textSize="35sp" />
 
     <Button
         android:id="@+id/button1"

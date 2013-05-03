@@ -25,6 +25,10 @@ public class WifiUtils{
 			return false;
 		}
 	}
+	public static boolean isAPMode(){
+		int state = mWifiManager.getWifiApState();
+		return state == WifiManager.WIFI_AP_STATE_ENABLED;
+	}
 	public static String getActiveSSID(){
 		int state = mWifiManager.getWifiApState();
 		if(state == WifiManager.WIFI_AP_STATE_ENABLED){

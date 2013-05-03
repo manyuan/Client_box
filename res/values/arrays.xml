@@ -39,111 +39,6 @@
         <item>All</item>
     </string-array>
 
-    <!-- There is a setting to control the format of dates displayed throughout the system.  This is in the Date & Time Settings screen.  These will be adjusted to use punctuation appropriate to the user's locale. -->
-    <string-array name="date_format_values" translatable="false">
-        <!-- The blank item means to use whatever the locale calls for. -->
-        <item></item>
-        <item>MM-dd-yyyy</item>
-        <item>dd-MM-yyyy</item>
-        <item>yyyy-MM-dd</item>
-    </string-array>
-
-    <!-- Display settings.  The type of animations to show. -->
-    <string-array name="animations_entries">
-        <item>No animations</item>
-        <item>Some animations</item>
-        <item>All animations</item>
-    </string-array>
-
-    <!-- Display settings.  Summary for each type of animation. -->
-    <string-array name="animations_summaries">
-        <item>No window animations are shown</item>
-        <item>Some window animations are shown</item>
-        <item>All window animations are shown</item>
-    </string-array>
-
-    <!-- Do not translate. -->
-    <string-array name="animations_values">
-        <!-- Do not translate. -->
-        <item>00</item>
-        <!-- Do not translate. -->
-        <item>01</item>
-        <!-- Do not translate. -->
-        <item>11</item>
-    </string-array>
-
-
-    <!-- Default speech rate choices -->
-    <string-array name="tts_rate_entries">
-        <item>Very slow</item>
-        <item>Slow</item>
-        <item>Normal</item>
-        <item>Fast</item>
-        <item>Very fast</item>
-    </string-array>
-    <!-- Do not translate. -->
-    <string-array name="tts_rate_values">
-        <item>60</item>
-        <item>80</item>
-        <item>100</item>
-        <item>150</item>
-        <item>200</item>
-    </string-array>
-
-    <!-- Default pitch choices -->
-    <string-array name="tts_pitch_entries">
-        <item>Very low</item>
-        <item>Low</item>
-        <item>Normal</item>
-        <item>High</item>
-        <item>Very high</item>
-    </string-array>
-    <!-- Do not translate. -->
-    <string-array name="tts_pitch_values">
-        <item>50</item>
-        <item>80</item>
-        <item>100</item>
-        <item>120</item>
-        <item>150</item>
-    </string-array>
-
-    <!-- Default language choices -->
-    <string-array name="tts_lang_entries">
-        <item>American English</item>
-        <item>British English</item>
-        <item>French</item>
-        <item>German</item>
-        <item>Italian</item>
-        <item>Spanish</item>
-    </string-array>
-    <!-- Do not translate. -->
-    <string-array name="tts_lang_values">
-        <item>eng-USA</item>
-        <item>eng-GBR</item>
-        <item>fra-FRA</item>
-        <item>deu-DEU</item>
-        <item>ita-ITA</item>
-        <item>spa-ESP</item>
-    </string-array>
-    <!-- Do not translate. -->
-    <string-array name="tts_demo_strings">
-        <item>This is an example of speech synthesis in English.</item>
-        <item>This is an example of speech synthesis in English.</item>
-        <item>Voici un échantillon de synthèse vocale en français.</item>
-        <item>Dies ist ein Beispiel für Sprachsynthese in Deutsch.</item>
-        <item>Questo è un esempio di sintesi vocale in italiano.</item>
-        <item>Este es un ejemplo de síntesis de voz en español.</item>
-    </string-array>
-    <!-- Do not translate. -->
-    <string-array name="tts_engine_entries">
-        <item>Pico TTS</item>
-    </string-array>
-    <!-- Do not translate. -->
-    <string-array name="tts_engine_values">
-        <item>com.svox.pico</item>
-    </string-array>
-
-
     <!-- Wi-Fi settings -->
 
     <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
@@ -152,23 +47,23 @@
         <!-- Status message of Wi-Fi when it is idle. -->
         <item></item>
         <!-- Status message of Wi-Fi when it is scanning. -->
-        <item>Scanning\u2026</item>
+        <item>扫描中\u2026</item>
         <!-- Status message of Wi-Fi when it is connecting. -->
-        <item>Connecting\u2026</item>
+        <item>正在连接\u2026</item>
         <!-- Status message of Wi-Fi when it is authenticating. -->
-        <item>Authenticating\u2026</item>
+        <item>正在验证\u2026</item>
         <!-- Status message of Wi-Fi when it is obtaining IP address. -->
-        <item>Obtaining IP address\u2026</item>
+        <item>正在获取IP地址\u2026</item>
         <!-- Status message of Wi-Fi when it is connected. -->
-        <item>Connected</item>
+        <item>已连接</item>
         <!-- Status message of Wi-Fi when it is suspended. -->
-        <item>Suspended</item>
+        <item>休眠</item>
         <!-- Status message of Wi-Fi when it is disconnecting. -->
-        <item>Disconnecting\u2026</item>
+        <item>正在断开连接\u2026</item>
         <!-- Status message of Wi-Fi when it is disconnected. -->
-        <item>Disconnected</item>
+        <item>已断开连接</item>
         <!-- Status message of Wi-Fi when it is a failure. -->
-        <item>Unsuccessful</item>
+        <item>失败</item>
     </string-array>
 
     <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
@@ -177,23 +72,23 @@
         <!-- Status message of Wi-Fi when it is idle. -->
         <item></item>
         <!-- Status message of Wi-Fi when it is scanning. -->
-        <item>Scanning\u2026</item>
+        <item>扫描中\u2026</item>
         <!-- Status message of Wi-Fi when it is connecting to a network. -->
-        <item>Connecting to <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>正在连接 <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
         <!-- Status message of Wi-Fi when it is authenticating with a network. -->
-        <item>Authenticating with <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>正在验证 <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
         <!-- Status message of Wi-Fi when it is obtaining IP address from a network. -->
-        <item>Obtaining IP address from <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>正在获取IP地址 <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
         <!-- Status message of Wi-Fi when it is connected to a network. -->
-        <item>Connected to <xliff:g id="network_name">%1$s</xliff:g></item>
+        <item>已连接到 <xliff:g id="network_name">%1$s</xliff:g></item>
         <!-- Status message of Wi-Fi when it is suspended. -->
-        <item>Suspended</item>
+        <item>休眠</item>
         <!-- Status message of Wi-Fi when it is disconnecting from a network. -->
-        <item>Disconnecting from <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>正在断开连接 <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
         <!-- Status message of Wi-Fi when it is disconnected. -->
-        <item>Disconnected</item>
+        <item>已断开</item>
         <!-- Status message of Wi-Fi when it is a failure. -->
-        <item>Unsuccessful</item>
+        <item>失败</item>
     </string-array>
 
     <!-- Match this with the constants in AccessPoint. --> <skip />

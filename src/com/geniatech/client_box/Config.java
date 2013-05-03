@@ -15,7 +15,7 @@ public class Config{
 	
 	public static final String DEF_AP_SSID = "BOX_ID_1234";
 	public static final String DEF_AP_PASSWORD = "12345678";
-	public static final int DEF_AP_SEC_TYPE = 1;  // 0:open, 1:wpa psk, 2:wpa2 psk
+	public static final int DEF_AP_SEC_TYPE = 2;  // 0:open, 1:wpa psk, 2:wpa2 psk
 	
 	/* message format: cmd#boxID=xxx#boxIP=xxx#  */
 	public static final String CMD_BOX_REPORT_ID = "rptID";

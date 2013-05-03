@@ -8,7 +8,8 @@ public class BootupReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
     	Log.i("","-------------------boxService bootup receive.-------------------------");
-    	Intent intt = new Intent(context,BoxActivity.class);
+    	//Intent intt = new Intent(context,BoxActivity.class);
+    	Intent intt = new Intent(context,TmpActivity.class);
     	intt.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     	context.startActivity(intt);
     	
